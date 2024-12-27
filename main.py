@@ -359,7 +359,7 @@ def sort_tasks(by):
 # Создание основного окна
 
 main_window = tk.Tk()
-main_window.title('TaskManager "Malamute"')
+main_window.title('TaskManager "Malamute v.2.0"')
 main_window.geometry("1200x600")
 
 # Панели
@@ -491,7 +491,7 @@ settings_menu.add_command(label="Темная тема", command=lambda: change_
 help_menu = tk.Menu(menu_bar, tearoff=0)
 help_menu.add_command(
     label="О программе",
-    command=lambda: messagebox.showinfo("О программе", "TaskManager 'Malamute' v1.1"),
+    command=lambda: messagebox.showinfo("О программе", "TaskManager 'Malamute' v2.0"),
 )
 
 menu_bar.add_cascade(label="Файл", menu=file_menu)

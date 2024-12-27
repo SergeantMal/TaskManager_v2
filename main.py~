@@ -344,13 +344,16 @@ def sort_tasks(by):
     reverse = not sort_direction[by]  # Обратное направление сортировки
     sort_direction[by] = reverse
 
+    # Используем текущий список задач
+    current_tasks = tasks if current_category == "Всё" else categories.get(current_category, [])
+
     if by == "category":
-        tasks.sort(key=lambda x: x["category"], reverse=reverse)
+        current_tasks.sort(key=lambda x: x.category, reverse=reverse)
     elif by == "priority":
         priority_order = {"Низкий": 1, "Средний": 2, "Высокий": 3}
-        tasks.sort(key=lambda x: priority_order[x["priority"]], reverse=reverse)
+        current_tasks.sort(key=lambda x: priority_order[x.priority], reverse=reverse)
 
-    refresh_task_list()
+    refresh_task_list()  # Обновляем список задач
 
 
 # Создание основного окна
@@ -488,7 +491,7 @@ settings_menu.add_command(label="Темная тема", command=lambda: change_
 help_menu = tk.Menu(menu_bar, tearoff=0)
 help_menu.add_command(
     label="О программе",
-    command=lambda: messagebox.showinfo("О программе", "TaskManager 'Malamute' v1.1"),
+    command=lambda: messagebox.showinfo("О программе", "TaskManager 'Malamute' v2.0"),
 )
 
 menu_bar.add_cascade(label="Файл", menu=file_menu)
